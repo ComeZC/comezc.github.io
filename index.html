@@ -1,96 +1,222 @@
-<!DOCTYPE html>
-<html lang="en-us">
-  <head>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <title>CC&#39;s Space</title>
-    
-    <meta name="description" content="">
-    <meta name="author" content="">
-    
-    <link href="https://comezc.com/css/github-gist.min.css" rel="stylesheet">
-    <link href="https://comezc.com/css/style.css" rel="stylesheet">
-    
-    <link rel="apple-touch-icon" href="https://comezc.com/img/apple-touch-icon.png">
-    <link rel="icon" href="https://comezc.com/img/favicon.ico">
-    
     <meta name="generator" content="Hugo 0.55.6" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>CC&#39;s Notebook | come and go...</title>
+    <meta property="og:title" content="CC&#39;s Notebook | come and go...">
+    <meta property="og:type" content="website">
+    <meta name="Keywords" content="">
+    <meta name="description" content="">
+    <meta property="og:url" content="https://comezc.com/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
     
-    <link rel="alternate" type="application/atom+xml" href="https://comezc.com/index.xml" title="CC&#39;s Space">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="alternate" type="application/rss+xml+xml" href="https://comezc.com/index.xml" title="CC's Notebook" />
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    
+
+
     
     
+</head>
+
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <h1>
+                        <a id="logo" href="https://comezc.com/">
+                            CC&#39;s Notebook
+                        </a>
+                    </h1>
+                
+                <p class="description">come and go...</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://comezc.com/">首页</a>
+                    
+                    <a  href="https://comezc.com/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://comezc.com/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://comezc.com/post/mysql5.7-%E5%A4%9A%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%9A%E5%AE%9E%E4%BE%8B/" title="Mysql 5.7 多实例 - 多配置文件" >Mysql 5.7 多实例 - 多配置文件</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年7月11日
+                            </date>
+                            
+                            <div class="post-content">
+                                Mysql 5.7 多实例 - 多配置文件 Mysql5.7 默认支持mysqld multi方式来实现单机多实例，但是由于我这里Mysql已经由lnmp脚本默认创建了3306实例……
+                            </div>
+                            <p class="readmore"><a href="https://comezc.com/post/mysql5.7-%E5%A4%9A%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%9A%E5%AE%9E%E4%BE%8B/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://comezc.com/post/mysql5.7-%E4%B8%BB%E4%BB%8E/" title="Mysql5.7.22 主从配置" >Mysql5.7.22 主从配置</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年7月11日
+                            </date>
+                            
+                            <div class="post-content">
+                                Mysql5.7.22 主从配置 使用lnmp脚本搭建环境，默认mysql位于 /usr/local/mysql 目录下，默认配置文件为 /etc/my.cnf Master配置 开启binlog，即my.cnf配置的[my……
+                            </div>
+                            <p class="readmore"><a href="https://comezc.com/post/mysql5.7-%E4%B8%BB%E4%BB%8E/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://comezc.com/post/sql/" title="Sql scripts" >Sql scripts</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年7月5日
+                            </date>
+                            
+                            <div class="post-content">
+                                Sql scripts 按年/季/月/周/日/时统计 整体格式 SELECT DATE_FORMAT(FROM_UNIXTIME(created_at),'{FORMAT}') format, COUNT(*) cc FROM `user` GROUP BY format {FORMAT}分类： 年：%Y 季： DATE_FORMAT(FROM_UNIXTIME(created_at),'{FORMAT}') =&gt; CONCAT(DATE_FORMAT(FROM_UNIXTIME(created_at),'%Y'),FLOOR((DATE_FORMAT(FROM_UNIXTIME(created_at),'%m')+2)/3)) 月：%Y%m 周：%Y%u 日：%Y%m%d……
+                            </div>
+                            <p class="readmore"><a href="https://comezc.com/post/sql/">阅读全文</a></p>
+                        </article>
+                    
+                        <article class="post">
+                            <header>
+                                <h1 class="post-title">
+                                    <a href="https://comezc.com/post/shopify-scripts/" title="Shpify Scripts" >Shpify Scripts</a>
+                                </h1>
+                            </header>
+                            <date class="post-meta meta-date">
+                                2019年7月1日
+                            </date>
+                            
+                            <div class="post-content">
+                                Shopify Scripts 买指定商品，享受所有配件八折，其中，部分配件仅允许享受一次八折优惠 SPECIFIC_VID = 28785311875136 UNLIMIT_DISCOUNT_PIDS = [3742304010304, 3733881094208] LIMIT_ONCE_DISCOUNT_PIDS = [3742295982144] def partition(cart, line_items) # Sort the items by price from high to low sorted_items = line_items.sort_by{|line_item| line_item.variant.price}.reverse # Create an array of items to return……
+                            </div>
+                            <p class="readmore"><a href="https://comezc.com/post/shopify-scripts/">阅读全文</a></p>
+                        </article>
+                    
+                    
+
+
+
+
+
+                </div>
+            </div>
+
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://comezc.com/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
     
-  </head>
-  <body class="list home">
-    <header class="header">
-      <div class="wrap">
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://comezc.com/post/mysql5.7-%E5%A4%9A%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%9A%E5%AE%9E%E4%BE%8B/" title="Mysql 5.7 多实例 - 多配置文件">Mysql 5.7 多实例 - 多配置文件</a>
+    </li>
+    
+    <li>
+        <a href="https://comezc.com/post/mysql5.7-%E4%B8%BB%E4%BB%8E/" title="Mysql5.7.22 主从配置">Mysql5.7.22 主从配置</a>
+    </li>
+    
+    <li>
+        <a href="https://comezc.com/post/sql/" title="Sql scripts">Sql scripts</a>
+    </li>
+    
+    <li>
+        <a href="https://comezc.com/post/shopify-scripts/" title="Shpify Scripts">Shpify Scripts</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://comezc.com/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2019 <a href="https://comezc.com/">CC&#39;s Notebook By </a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
         
-        <h1 class="logo"><a href="https://comezc.com">CC&#39;s Space</a></h1>
-        
-        
-      </div>
-    </header>
-    
-    <main class="main">
-
-
-
-
-
-
-
-
-<article class="first-entry">
-  <header class="entry-header">
-    <h2>First</h2>
-  </header>
-  <section class="entry-content">
-   <p> Hello  aaa bbb ccc  ...</p>
-  </section>
-  <footer class="entry-footer">
-    <time>2019.6.11</time>
-  </footer>
-  <a class="entry-link" href="https://comezc.com/post/first/"></a>
-</article>
-
-
-
-
-
-</main>
-<footer class="footer">
-  <span>&copy; 2019 <a href="https://comezc.com">CC&#39;s Space</a></span>
-  <span>&middot;</span>
-  <span>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</span>
-  <span>&middot;</span>
-  <span>Theme️ <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper</a></span>
+    </div>
 </footer>
-<script src="https://comezc.com/js/instantclick.min.js" data-no-instant></script>
-<script data-no-instant>InstantClick.init();</script>
-<script src="https://comezc.com/js/highlight.min.js" data-no-instant></script>
-<script data-no-instant>
-  let body;
-  function menuToggleListener() {
-    body.classList.toggle('blur');
-  }
-  function setMenuToggleListener() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    body = document.querySelector('body');
-    menuToggle.addEventListener('click', menuToggleListener);
-  }
 
-  hljs.initHighlightingOnLoad();
-  setMenuToggleListener();
 
-  InstantClick.on('change', function () {
-    document.querySelectorAll('pre code').forEach((block) => {
-      hljs.highlightBlock(block);
-    });
-    setMenuToggleListener();
-  });
-</script>
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+
+
+
+
+
+
 </body>
 </html>
-

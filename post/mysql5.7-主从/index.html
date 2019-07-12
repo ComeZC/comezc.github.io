@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.55.6" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Mysql5.7.22 主从配置 | CC&#39;s Notebook</title>
+    <meta property="og:title" content="Mysql5.7.22 主从配置 - CC&#39;s Notebook">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content="2019-07-11T15:50:19&#43;08:00">
+        
+        
+    <meta property="article:modified_time" content="2019-07-11T15:50:19&#43;08:00">
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="Mysql5.7.22 主从配置">
+        
+    <meta name="author" content="">
+    <meta property="og:url" content="https://comezc.com/post/mysql5.7-%E4%B8%BB%E4%BB%8E/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+        <link rel="stylesheet" href="/css/prism.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://comezc.com/">
+                        CC&#39;s Notebook
+                    </a>
+                
+                <p class="description">come and go...</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://comezc.com/">首页</a>
+                    
+                    <a  href="https://comezc.com/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://comezc.com/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">Mysql5.7.22 主从配置</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            2019年7月11日
+                        </date>
+                        
+                        
+                        
+                        <div class="post-content">
+                            
+
+<h2 id="mysql5-7-22-主从配置">Mysql5.7.22 主从配置</h2>
+
+<blockquote>
+<p>使用lnmp脚本搭建环境，默认mysql位于 <em>/usr/local/mysql</em> 目录下，默认配置文件为 <em>/etc/my.cnf</em></p>
+</blockquote>
+
+<h3 id="master配置">Master配置</h3>
+
+<ol>
+<li>开启binlog，即my.cnf配置的[mysqld]部分下面有如下配置：</li>
+</ol>
+
+<pre><code class="language-mysql">   log-bin=mysql-bin
+   binlog_format=mixed
+   server-id   = 1
+   expire_logs_days = 10
+</code></pre>
+
+<p>此处为lnmp脚本默认执行时开启的binlog，具体binlog开启还有更多配置，包括类型，缓存，过滤等。因不想重启master mysql服务器，此处不做修改。</p>
+
+<ol>
+<li>为slave服务器新建用户并授权（可指定slave服务器ip，增强安全性）：</li>
+</ol>
+
+<pre><code class="language-mysql">   grant replication slave on *.* to 'slave'@'1.1.1.1' identified by '*******';
+   flush privileges;
+</code></pre>
+
+<ol>
+<li>查看master服务器的状态，查看结果后面配置slave服务器需用到</li>
+</ol>
+
+<pre><code class="language-mysql">   show master status;
+</code></pre>
+
+<p>查询结果参考如下：</p>
+
+<pre><code class="language-mysql">   mysql&gt; show master status;
+   +------------------+-----------+--------------+------------------+-------------------+
+   | File             | Position  | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_Set |
+   +------------------+-----------+--------------+------------------+-------------------+
+   | mysql-bin.000005 | 455142607 |              |                  |                   |
+   +------------------+-----------+--------------+------------------+-------------------+
+   1 row in set (0.00 sec)
+</code></pre>
+
+<ol>
+<li>全量备份需要主从同步的数据库</li>
+</ol>
+
+<pre><code class="language-mysql">   mysqldump -u root -p --databases db_test_ms &gt; /tmp/db_test_ms.sql
+</code></pre>
+
+<h3 id="slave配置">Slave配置</h3>
+
+<ol>
+<li>binlog部分配置特别注意server-id与master需不同</li>
+</ol>
+
+<pre><code class="language-mysql">   log-bin=mysql-bin
+   binlog_format=mixed
+   server-id   = 101
+   expire_logs_days = 10
+</code></pre>
+
+<ol>
+<li>登录slave服务器，并导入需同步的表数据（先复制master服务器的 */tmp/*db_test_ms.sql 到当前服务器的相同地址）</li>
+</ol>
+
+<pre><code class="language-mysql">   # comezc @ localhost in ~ 
+   $ mysql -h127.0.0.1 -uroot -P3308 -p
+   Enter password:
+   Welcome to the MySQL monitor.  Commands end with ; or \g.
+   Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+   
+   mysql&gt; create database db_test_ms;
+   Query OK, 1 row affected (0.00 sec)
+   
+   mysql&gt; use db_test_ms;
+   Database changed
+   mysql&gt; source /tmp/db_test_ms.sql
+   ...some output...
+</code></pre>
+
+<ol>
+<li>连接主服务器，并设置仅同步 db_test_ms数据库</li>
+</ol>
+
+<blockquote>
+<p>master_log_file和master_log_pos读取自master服务器上执行*show master status*之后的结果里的 File和Position，务必在执行这行命令之前去master服务器查询这两个参数</p>
+</blockquote>
+
+<pre><code class="language-mysql">   mysql&gt; change master to
+       -&gt; master_host='1.1.1.1',
+       -&gt; master_port=3306,
+       -&gt; master_user='slave',
+       -&gt; master_password='*****',
+       -&gt; master_log_file='mysql-bin.000001',
+       -&gt; master_log_pos=123456;
+   Query OK, 0 rows affected, 2 warnings (0.01 sec)
+   
+   mysql&gt; change replication filter replicate_do_db=(db_test_ms);
+   Query OK, 0 rows affected (0.00 sec)
+</code></pre>
+
+<ol>
+<li>查看slave是否运行正常，如下两个显示Yes即为正常</li>
+</ol>
+
+<pre><code class="language-mysql">   mysql&gt; show slave status\G;
+   ......
+   ......
+   Slave_IO_Running: Yes
+   Slave_SQL_Running: Yes
+   ......
+   ......
+</code></pre>
+
+                        </div>
+
+                        
+
+
+                        
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            没有标签
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://comezc.com/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://comezc.com/post/mysql5.7-%E5%A4%9A%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%9A%E5%AE%9E%E4%BE%8B/" title="Mysql 5.7 多实例 - 多配置文件">Mysql 5.7 多实例 - 多配置文件</a>
+    </li>
+    
+    <li>
+        <a href="https://comezc.com/post/mysql5.7-%E4%B8%BB%E4%BB%8E/" title="Mysql5.7.22 主从配置">Mysql5.7.22 主从配置</a>
+    </li>
+    
+    <li>
+        <a href="https://comezc.com/post/sql/" title="Sql scripts">Sql scripts</a>
+    </li>
+    
+    <li>
+        <a href="https://comezc.com/post/shopify-scripts/" title="Shpify Scripts">Shpify Scripts</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://comezc.com/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2019 <a href="https://comezc.com/">CC&#39;s Notebook By </a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    <script type="text/javascript">
+    
+    (function(){
+        $("pre code").parent().addClass("line-numbers")
+    }())
+
+    window.MathJax = {
+        tex2jax: {
+            inlineMath: [ ['$','$'] ],
+            processEscapes: true
+        }
+    };
+    </script>
+    <script type="text/javascript" src="/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+
+
+
+
+
+</body>
+</html>

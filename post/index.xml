@@ -1,23 +1,50 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on CC&#39;s Space</title>
+    <title>Posts on CC&#39;s Notebook</title>
     <link>https://comezc.com/post/</link>
-    <description>Recent content in Posts on CC&#39;s Space</description>
+    <description>Recent content in Posts on CC&#39;s Notebook</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 11 Jun 2019 10:50:19 +0800</lastBuildDate>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 11 Jul 2019 16:50:19 +0800</lastBuildDate>
     
 	<atom:link href="https://comezc.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>First</title>
-      <link>https://comezc.com/post/first/</link>
-      <pubDate>Tue, 11 Jun 2019 10:50:19 +0800</pubDate>
+      <title>Mysql 5.7 多实例 - 多配置文件</title>
+      <link>https://comezc.com/post/mysql5.7-%E5%A4%9A%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%9A%E5%AE%9E%E4%BE%8B/</link>
+      <pubDate>Thu, 11 Jul 2019 16:50:19 +0800</pubDate>
       
-      <guid>https://comezc.com/post/first/</guid>
-      <description> Hello  aaa bbb ccc  </description>
+      <guid>https://comezc.com/post/mysql5.7-%E5%A4%9A%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%9A%E5%AE%9E%E4%BE%8B/</guid>
+      <description>Mysql 5.7 多实例 - 多配置文件 Mysql5.7 默认支持mysqld multi方式来实现单机多实例，但是由于我这里Mysql已经由lnmp脚本默认创建了3306实例</description>
+    </item>
+    
+    <item>
+      <title>Mysql5.7.22 主从配置</title>
+      <link>https://comezc.com/post/mysql5.7-%E4%B8%BB%E4%BB%8E/</link>
+      <pubDate>Thu, 11 Jul 2019 15:50:19 +0800</pubDate>
+      
+      <guid>https://comezc.com/post/mysql5.7-%E4%B8%BB%E4%BB%8E/</guid>
+      <description>Mysql5.7.22 主从配置 使用lnmp脚本搭建环境，默认mysql位于 /usr/local/mysql 目录下，默认配置文件为 /etc/my.cnf Master配置 开启binlog，即my.cnf配置的[my</description>
+    </item>
+    
+    <item>
+      <title>Sql scripts</title>
+      <link>https://comezc.com/post/sql/</link>
+      <pubDate>Fri, 05 Jul 2019 10:50:19 +0800</pubDate>
+      
+      <guid>https://comezc.com/post/sql/</guid>
+      <description>Sql scripts 按年/季/月/周/日/时统计 整体格式 SELECT DATE_FORMAT(FROM_UNIXTIME(created_at),&#39;{FORMAT}&#39;) format, COUNT(*) cc FROM `user` GROUP BY format {FORMAT}分类： 年：%Y 季： DATE_FORMAT(FROM_UNIXTIME(created_at),&#39;{FORMAT}&#39;) =&amp;gt; CONCAT(DATE_FORMAT(FROM_UNIXTIME(created_at),&#39;%Y&#39;),FLOOR((DATE_FORMAT(FROM_UNIXTIME(created_at),&#39;%m&#39;)+2)/3)) 月：%Y%m 周：%Y%u 日：%Y%m%d</description>
+    </item>
+    
+    <item>
+      <title>Shpify Scripts</title>
+      <link>https://comezc.com/post/shopify-scripts/</link>
+      <pubDate>Mon, 01 Jul 2019 16:50:19 +0800</pubDate>
+      
+      <guid>https://comezc.com/post/shopify-scripts/</guid>
+      <description>Shopify Scripts 买指定商品，享受所有配件八折，其中，部分配件仅允许享受一次八折优惠 SPECIFIC_VID = 28785311875136 UNLIMIT_DISCOUNT_PIDS = [3742304010304, 3733881094208] LIMIT_ONCE_DISCOUNT_PIDS = [3742295982144] def partition(cart, line_items) # Sort the items by price from high to low sorted_items = line_items.sort_by{|line_item| line_item.variant.price}.reverse # Create an array of items to return</description>
     </item>
     
   </channel>
