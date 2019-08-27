@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sql on CC&#39;s Notebook</title>
+    <link>https://comezc.com/tags/sql/</link>
+    <description>Recent content in sql on CC&#39;s Notebook</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>xxx</copyright>
+    <lastBuildDate>Fri, 05 Jul 2019 10:50:19 +0800</lastBuildDate>
+    
+	<atom:link href="https://comezc.com/tags/sql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Sql scripts</title>
+      <link>https://comezc.com/post/sql/</link>
+      <pubDate>Fri, 05 Jul 2019 10:50:19 +0800</pubDate>
+      
+      <guid>https://comezc.com/post/sql/</guid>
+      <description> Sql scripts 按年/季/月/周/日/时统计  整体格式
+SELECT DATE_FORMAT(FROM_UNIXTIME(created_at),&#39;{FORMAT}&#39;) format, COUNT(*) cc FROM `user` GROUP BY format  {FORMAT}分类：
+ 年：%Y
+ 季：
+DATE_FORMAT(FROM_UNIXTIME(created_at),&#39;{FORMAT}&#39;) =&amp;gt; CONCAT(DATE_FORMAT(FROM_UNIXTIME(created_at),&#39;%Y&#39;),FLOOR((DATE_FORMAT(FROM_UNIXTIME(created_at),&#39;%m&#39;)+2)/3))  月：%Y%m
+ 周：%Y%u
+ 日：%Y%m%d
+ 时：%Y-%m-%d %H
+   创建用户并授权 create user &#39;reader&#39;@&#39;%&#39; identified by &#39;***&#39;; grant all on db_test.* to &#39;reader&#39;@&#39;%&#39;; flush privileges;  创建utf8mb4字符集数据库 create database xxx default character set utf8mb4 collate utf8mb4_unicode_ci;  </description>
+    </item>
+    
+  </channel>
+</rss>

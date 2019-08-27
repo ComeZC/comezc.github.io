@@ -6,9 +6,29 @@
     <description>Recent content in Categories on CC&#39;s Notebook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
+    <copyright>xxx</copyright>
+    <lastBuildDate>Thu, 11 Jul 2019 16:50:19 +0800</lastBuildDate>
     
 	<atom:link href="https://comezc.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mysql</title>
+      <link>https://comezc.com/categories/mysql/</link>
+      <pubDate>Thu, 11 Jul 2019 16:50:19 +0800</pubDate>
+      
+      <guid>https://comezc.com/categories/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Shopify</title>
+      <link>https://comezc.com/categories/shopify/</link>
+      <pubDate>Mon, 01 Jul 2019 16:50:19 +0800</pubDate>
+      
+      <guid>https://comezc.com/categories/shopify/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

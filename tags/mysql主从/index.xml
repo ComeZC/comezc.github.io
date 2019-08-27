@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mysql主从 on CC&#39;s Notebook</title>
+    <link>https://comezc.com/tags/mysql%E4%B8%BB%E4%BB%8E/</link>
+    <description>Recent content in mysql主从 on CC&#39;s Notebook</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>xxx</copyright>
+    <lastBuildDate>Thu, 11 Jul 2019 15:50:19 +0800</lastBuildDate>
+    
+	<atom:link href="https://comezc.com/tags/mysql%E4%B8%BB%E4%BB%8E/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mysql5.7.22 主从配置</title>
+      <link>https://comezc.com/post/mysql5.7-%E4%B8%BB%E4%BB%8E/</link>
+      <pubDate>Thu, 11 Jul 2019 15:50:19 +0800</pubDate>
+      
+      <guid>https://comezc.com/post/mysql5.7-%E4%B8%BB%E4%BB%8E/</guid>
+      <description>Mysql5.7.22 主从配置  使用lnmp脚本搭建环境，默认mysql位于 /usr/local/mysql 目录下，默认配置文件为 /etc/my.cnf
+ Master配置  开启binlog，即my.cnf配置的[mysqld]部分下面有如下配置：
+log-bin=mysql-bin binlog_format=mixed server-id = 1 expire_logs_days = 10  此处为lnmp脚本默认执行时开启的binlog，具体binlog开启还有更多配置，包括类型，缓存，过滤等。因不想重启master mysql服务器，此处不做修改
+ 为slave服务器新建用户并授权（可指定slave服务器ip，增强安全性）：
+``` grant replication slave on *.* to &#39;slave&#39;@&#39;1.1.1.1&#39; identified by &#39;*******&#39;; flush privileges; ```  查看master服务器的状态，查看结果后面配置slave服务器需用到
+show master status;  查询结果参考如下：
+mysql&amp;gt; show master status; +------------------+-----------+--------------+------------------+-------------------+ | File | Position | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_Set | +------------------+-----------+--------------+------------------+-------------------+ | mysql-bin.000005 | 455142607 | | | | +------------------+-----------+--------------+------------------+-------------------+ 1 row in set (0.</description>
+    </item>
+    
+  </channel>
+</rss>

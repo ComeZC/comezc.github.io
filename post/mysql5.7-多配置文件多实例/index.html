@@ -1,87 +1,87 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
+<!DOCTYPE html>
+<html>
+   <head>
+   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-site-verification" content="XN4YmHgE76jTp2kNQ9qnsVSApl6yIQBzdyLe0BnbFks" />
 
-    <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.55.6" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Mysql 5.7 多实例 - 多配置文件 | CC&#39;s Notebook</title>
-    <meta property="og:title" content="Mysql 5.7 多实例 - 多配置文件 - CC&#39;s Notebook">
-    <meta property="og:type" content="article">
-        
-    <meta property="article:published_time" content="2019-07-11T16:50:19&#43;08:00">
-        
-        
-    <meta property="article:modified_time" content="2019-07-11T16:50:19&#43;08:00">
-        
-    <meta name="Keywords" content="">
-    <meta name="description" content="Mysql 5.7 多实例 - 多配置文件">
-        
-    <meta name="author" content="">
-    <meta property="og:url" content="https://comezc.com/post/mysql5.7-%E5%A4%9A%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%9A%E5%AE%9E%E4%BE%8B/">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-
-    <link rel="stylesheet" href="/css/normalize.css">
-    
-        <link rel="stylesheet" href="/css/prism.css">
-    
-    <link rel="stylesheet" href="/css/style.css">
-    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-
-    
-
-
+  <title>
     
     
-</head>
+    Mysql 5.7 多实例 - 多配置文件 - CC&#39;s Notebook
+    
+  </title>
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
 
-<body>
-<header id="header" class="clearfix">
-    <div class="container">
-        <div class="col-group">
-            <div class="site-name ">
-                
-                    <a id="logo" href="https://comezc.com/">
-                        CC&#39;s Notebook
-                    </a>
-                
-                <p class="description">come and go...</p>
-            </div>
-            <div>
-                <nav id="nav-menu" class="clearfix">
-                    <a class="current" href="https://comezc.com/">首页</a>
-                    
-                    <a  href="https://comezc.com/archives/" title="归档">归档</a>
-                    
-                    <a  href="https://comezc.com/about/" title="关于">关于</a>
-                    
-                </nav>
-            </div>
-        </div>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/holder.min.js" type='text/javascript'></script>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/highlight/styles/darkula.css">  
+<script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+  <link rel="canonical" href="https://comezc.com/post/mysql5.7-%E5%A4%9A%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%9A%E5%AE%9E%E4%BE%8B/">
+  <link href="" rel="alternate" type="application/rss+xml" title="Mysql 5.7 多实例 - 多配置文件" />
+  <script src="/highlight/highlight.pack.js" type='text/javascript'></script>
+  <script src="/highlight/highlightjs-line-numbers.min.js"></script>
+  <script type="text/javascript">
+
+    $(document).ready(function() {
+    
+    hljs.initHighlightingOnLoad();
+    $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+    hljs.lineNumbersBlock(block);
+    });
+});
+  </script>
+   </head>
+   <body data-spy="scroll" data-target="#toc">
+     <header class="navbar navbar-default navbar-fixed-top" id="top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://comezc.com/">CC&#39;s Notebook</a>
     </div>
+
+    
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
+	
+	
+	<li  ><a href="/">Home</a></li>
+	
+
+	
+	<li > <a href="/tags/" >Tags</a></li>
+      </ul>
+</nav>
 </header>
 
+     <div class="jumbotron masthead" role="main">
+       <div class="container">
+	 <div class="row">
 
-<div id="body">
-    <div class="container">
-        <div class="col-group">
+ 	   <div class="col-md-8 col-md-offset-2 ">
+	   
+<div class="panel panel-default">
+  <div class="panel-body">
+      <article id='post' >
+	<div class='title'> Mysql 5.7 多实例 - 多配置文件 </div>
+	  
+	  <span class="text-muted"><ion-icon name="ios-calendar"></ion-icon>Posted by:&nbsp;Thu Jul 11, 2019 | 
+	  <ion-icon name="ios-podium"></ion-icon>Word Count: 419&nbsp;&nbsp; | 
+	  <ion-icon name="ios-time"></ion-icon> Reading Time: 2 Minute&nbsp;&nbsp;</span>
 
-            <div class="col-8" id="main">
-                <div class="res-cons">
-                    <article class="post">
-                        <header>
-                            <h1 class="post-title">Mysql 5.7 多实例 - 多配置文件</h1>
-                        </header>
-                        <date class="post-meta meta-date">
-                            2019年7月11日
-                        </date>
-                        
-                        
-                        
-                        <div class="post-content">
-                            
+	  
 
 <h2 id="mysql-5-7-多实例-多配置文件">Mysql 5.7 多实例 - 多配置文件</h2>
 
@@ -92,266 +92,215 @@
 </blockquote>
 
 <ol>
-<li>创建新实例的数据目录（datadir）</li>
-</ol>
+<li><p>创建新实例的数据目录（datadir）</p>
 
-<pre><code class="language-shell">   # comezc @ localhost in ~
-   $ cd /usr/local/mysql/
-   
-   # comezc @ localhost in /usr/local/mysql
-   $ sudo mkdir var3308
-   
-   # comezc @ localhost in /usr/local/mysql
-   $ sudo chown -R mysql. var3308
+<pre><code class="language-shell"># comezc @ localhost in ~
+$ cd /usr/local/mysql/
+    
+# comezc @ localhost in /usr/local/mysql
+$ sudo mkdir var3308
+    
+# comezc @ localhost in /usr/local/mysql
+$ sudo chown -R mysql. var3308
+</code></pre></li>
+
+<li><p>初始化数据目录</p>
+
+<pre><code class="language-shell"># comezc @ localhost in /usr/local/mysql
+$ sudo /usr/local/mysql/bin/mysqld --no-defaults \
+--initialize-insecure \
+--basedir=/usr/local/mysql \
+--datadir=/usr/local/mysql/var3308 \
+--user=mysql \
+--explicit_defaults_for_timestamp
+2019-07-10T07:39:47.417202Z 0 [Warning] InnoDB: New log files created, LSN=45790
+2019-07-10T07:39:47.667017Z 0 [Warning] InnoDB: Creating foreign key constraint system tables.
+2019-07-10T07:39:47.728073Z 0 [Warning] No existing UUID has been found, so we assume that this is the first time that this server has been started. Generating a new UUID: e48ebb7b-a2e5-11e9-ad25-06e8184dad8c.
+2019-07-10T07:39:47.729454Z 0 [Warning] Gtid table is not ready to be used. Table 'mysql.gtid_executed' cannot be opened.
+2019-07-10T07:39:47.730085Z 1 [Warning] root@localhost is created with an empty password ! Please consider switching off the --initialize-insecure option.
+</code></pre></li>
+
+<li><p>复制默认配置文件，并进行修改，作为新实例的配置文件</p>
+
+<pre><code class="language-shell"># comezc @ localhost in /usr/local/mysql
+$ sudo cp /etc/my.cnf /usr/local/mysql/var3308/my3308.cnf
+    
+# comezc @ localhost in /usr/local/mysql
+$ sudo chown -R mysql. var3308
+    
+# comezc @ localhost in /usr/local/mysql
+$ sudo vim var3308/my3308.cnf
 </code></pre>
 
-<ol>
-<li>初始化数据目录</li>
-</ol>
+<p>新实例配置参考：</p>
 
-<pre><code class="language-shell">   # comezc @ localhost in /usr/local/mysql
-   $ sudo /usr/local/mysql/bin/mysqld --no-defaults \
-   --initialize-insecure \
-   --basedir=/usr/local/mysql \
-   --datadir=/usr/local/mysql/var3308 \
-   --user=mysql \
-   --explicit_defaults_for_timestamp
-   2019-07-10T07:39:47.417202Z 0 [Warning] InnoDB: New log files created, LSN=45790
-   2019-07-10T07:39:47.667017Z 0 [Warning] InnoDB: Creating foreign key constraint system tables.
-   2019-07-10T07:39:47.728073Z 0 [Warning] No existing UUID has been found, so we assume that this is the first time that this server has been started. Generating a new UUID: e48ebb7b-a2e5-11e9-ad25-06e8184dad8c.
-   2019-07-10T07:39:47.729454Z 0 [Warning] Gtid table is not ready to be used. Table 'mysql.gtid_executed' cannot be opened.
-   2019-07-10T07:39:47.730085Z 1 [Warning] root@localhost is created with an empty password ! Please consider switching off the --initialize-insecure option.
-</code></pre>
-
-<ol>
-<li>复制默认配置文件，并进行修改，作为新实例的配置文件</li>
-</ol>
-
-<pre><code class="language-shell">   # comezc @ localhost in /usr/local/mysql
-   $ sudo cp /etc/my.cnf /usr/local/mysql/var3308/my3308.cnf
-   
-   # comezc @ localhost in /usr/local/mysql
-   $ sudo chown -R mysql. var3308
-   
-   # comezc @ localhost in /usr/local/mysql
-   $ sudo vim var3308/my3308.cnf
-</code></pre>
-
-<pre><code class="language-mysql">   [client]
-   #password   = your_password
-   port        = 3308 #注意
-   socket      = /tmp/mysql-3308.sock #注意
-   
-   [mysqld]
-   port        = 3308 #注意
-   socket      = /tmp/mysql-3308.sock #注意
-   datadir = /usr/local/mysql/var3308 #注意
-   skip-external-locking
-   key_buffer_size = 32M
-   max_allowed_packet = 1M
-   table_open_cache = 128
-   sort_buffer_size = 768K
-   net_buffer_length = 8K
-   read_buffer_size = 768K
-   read_rnd_buffer_size = 512K
-   myisam_sort_buffer_size = 8M
-   thread_cache_size = 16
-   query_cache_size = 16M
-   tmp_table_size = 32M
-   performance_schema_max_table_instances = 1000
-   
-   log-error = /usr/local/mysql/var3308/mysql3308_error.log #注意
-   pid-file = /usr/local/mysql/var3308/mysql3308.pid #注意
-   
-   explicit_defaults_for_timestamp = true
-   #skip-networking
-   max_connections = 500
-   max_connect_errors = 100
-   open_files_limit = 65535
-   
-   log-bin=mysql-bin
-   binlog_format=mixed
-   server-id   = 102
-   expire_logs_days = 10
-   early-plugin-load = &quot;&quot;
-   
-   default_storage_engine = InnoDB
-   innodb_file_per_table = 1
-   innodb_data_home_dir = /usr/local/mysql/var3308 #注意
-   innodb_data_file_path = ibdata1:10M:autoextend
-   innodb_log_group_home_dir = /usr/local/mysql/var3308 #注意
-   innodb_buffer_pool_size = 128M
-   innodb_log_file_size = 32M
-   innodb_log_buffer_size = 8M
-   innodb_flush_log_at_trx_commit = 1
-   innodb_lock_wait_timeout = 50
-   
-   [mysqldump]
-   quick
-   max_allowed_packet = 16M
-   
-   [mysql]
-   no-auto-rehash
-   
-   [myisamchk]
-   key_buffer_size = 32M
-   sort_buffer_size = 768K
-   read_buffer = 2M
-   write_buffer = 2M
-   
-   [mysqlhotcopy]
-   interactive-timeout
+<pre><code>[client]
+#password    = your_password
+port          = 3308 #注意
+socket        = /tmp/mysql-3308.sock #注意
+    
+[mysqld]
+port          = 3308 #注意
+socket        = /tmp/mysql-3308.sock #注意
+datadir = /usr/local/mysql/var3308 #注意
+skip-external-locking
+key_buffer_size = 32M
+max_allowed_packet = 1M
+table_open_cache = 128
+sort_buffer_size = 768K
+net_buffer_length = 8K
+read_buffer_size = 768K
+read_rnd_buffer_size = 512K
+myisam_sort_buffer_size = 8M
+thread_cache_size = 16
+query_cache_size = 16M
+tmp_table_size = 32M
+performance_schema_max_table_instances = 1000
+    
+log-error = /usr/local/mysql/var3308/mysql3308_error.log #注意
+pid-file = /usr/local/mysql/var3308/mysql3308.pid #注意
+    
+explicit_defaults_for_timestamp = true
+#skip-networking
+max_connections = 500
+max_connect_errors = 100
+open_files_limit = 65535
+    
+log-bin=mysql-bin
+binlog_format=mixed
+server-id    = 102
+expire_logs_days = 10
+early-plugin-load = &quot;&quot;
+    
+default_storage_engine = InnoDB
+innodb_file_per_table = 1
+innodb_data_home_dir = /usr/local/mysql/var3308 #注意
+innodb_data_file_path = ibdata1:10M:autoextend
+innodb_log_group_home_dir = /usr/local/mysql/var3308 #注意
+innodb_buffer_pool_size = 128M
+innodb_log_file_size = 32M
+innodb_log_buffer_size = 8M
+innodb_flush_log_at_trx_commit = 1
+innodb_lock_wait_timeout = 50
+    
+[mysqldump]
+quick
+max_allowed_packet = 16M
+    
+[mysql]
+no-auto-rehash
+    
+[myisamchk]
+key_buffer_size = 32M
+sort_buffer_size = 768K
+read_buffer = 2M
+write_buffer = 2M
+    
+[mysqlhotcopy]
+interactive-timeout
 </code></pre>
 
 <blockquote>
 <p>此处配置多数均为lnmp脚本代为写入，本人暂时水平太菜，不做修改</p>
-</blockquote>
+</blockquote></li>
 
-<ol>
-<li>启动新实例</li>
-</ol>
+<li><p>启动新实例</p>
 
 <p>使用mysqld_safe直接启动，使用mysqladmin进行关闭和重载</p>
 
-<pre><code class="language-shell">   # comezc @ localhost in ~
-   $ sudo mysqld_safe --defaults-file=/usr/local/mysql/var3308/my3308.cnf --datadir=/usr/local/mysql/var3308
-   
-   # comezc @ localhost in ~
-   $ sudo /usr/local/mysql/bin/mysqladmin -u root -p -S /tmp/mysql-3308.sock shutdown|reload
-</code></pre>
+<pre><code class="language-shell"># comezc @ localhost in ~
+$ sudo mysqld_safe --defaults-file=/usr/local/mysql/var3308/my3308.cnf --datadir=/usr/local/mysql/var3308
+    
+# comezc @ localhost in ~
+$ sudo /usr/local/mysql/bin/mysqladmin -u root -p -S /tmp/mysql-3308.sock shutdown|reload
+</code></pre></li>
 
-<ol>
-<li>空密码登录并修改root密码</li>
+<li><p>空密码登录并修改root密码</p>
+
+<pre><code class="language-shell"># comezc @ localhost in ~ 
+$ mysql -h127.0.0.1 -uroot -P3308 -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+    
+mysql&gt; set password for root@localhost = password('******');
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+    
+mysql&gt; exit
+Bye
+</code></pre></li>
 </ol>
 
-<pre><code class="language-shell">   # comezc @ localhost in ~ 
-   $ mysql -h127.0.0.1 -uroot -P3308 -p
-   Enter password:
-   Welcome to the MySQL monitor.  Commands end with ; or \g.
-   Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-   
-   mysql&gt; set password for root@localhost = password('******');
-   Query OK, 0 rows affected, 1 warning (0.00 sec)
-   
-   mysql&gt; exit
-   Bye
-</code></pre>
 
-                        </div>
+	  
+	  	  <div class="tags">	
 
-                        
+	    <p class="categories">
+<ion-icon name="folder"></ion-icon>
+	  
+	  <a class="btn btn-default btn-xs text-capitalize" href="/categories/mysql"> Mysql</a>
+	  
+	    </p>
+	    
+<p><ion-icon name="pricetag"></ion-icon>  <a itemprop="keywords"  class="label label-danger" href="/tags/mysql">mysql</a> <a itemprop="keywords"  class="label label-danger" href="/tags/mysql%E5%8D%95%E6%9C%BA%E5%A4%9A%E5%AE%9E%E4%BE%8B">Mysql单机多实例</a></p>
 
 
-                        
 
+	    	  </div>
+	    
 
-                        <div class="post-meta meta-tags">
-                            
-                            没有标签
-                            
-                        </div>
-                    </article>
-                    
-    
-
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
     
     
-                </div>
-            </div>
-            <div id="secondary">
-    <section class="widget">
-        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
-      
-      <input type="text" name="q" maxlength="20" placeholder="Search">
-      <input type="hidden" name="sitesearch" value="https://comezc.com/">
-      <button type="submit" class="submit icon-search"></button>
-</form>
-    </section>
     
-    <section class="widget">
-        <h3 class="widget-title">最近文章</h3>
-<ul class="widget-list">
-    
-    <li>
-        <a href="https://comezc.com/post/mysql5.7-%E5%A4%9A%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%9A%E5%AE%9E%E4%BE%8B/" title="Mysql 5.7 多实例 - 多配置文件">Mysql 5.7 多实例 - 多配置文件</a>
-    </li>
-    
-    <li>
-        <a href="https://comezc.com/post/mysql5.7-%E4%B8%BB%E4%BB%8E/" title="Mysql5.7.22 主从配置">Mysql5.7.22 主从配置</a>
-    </li>
-    
-    <li>
-        <a href="https://comezc.com/post/sql/" title="Sql scripts">Sql scripts</a>
-    </li>
-    
-    <li>
-        <a href="https://comezc.com/post/shopify-scripts/" title="Shpify Scripts">Shpify Scripts</a>
-    </li>
-    
-</ul>
-    </section>
-
-    
-
-    <section class="widget">
-        <h3 class="widget-title">分类</h3>
-<ul class="widget-list">
-    
-</ul>
-    </section>
-
-    <section class="widget">
-        <h3 class="widget-title">标签</h3>
-<div class="tagcloud">
-    
-</div>
-    </section>
-
-    
-
-    <section class="widget">
-        <h3 class="widget-title">其它</h3>
-        <ul class="widget-list">
-            <li><a href="https://comezc.com/index.xml">文章 RSS</a></li>
-        </ul>
-    </section>
-</div>
-        </div>
-    </div>
-</div>
-<footer id="footer">
-    <div class="container">
-        &copy; 2019 <a href="https://comezc.com/">CC&#39;s Notebook By </a>.
-        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
-        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
-        
-    </div>
-</footer>
-
-
-    <script type="text/javascript">
-    
-    (function(){
-        $("pre code").parent().addClass("line-numbers")
-    }())
-
-    window.MathJax = {
-        tex2jax: {
-            inlineMath: [ ['$','$'] ],
-            processEscapes: true
-        }
     };
-    </script>
-    <script type="text/javascript" src="/js/prism.js" async="true"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "user id" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </div>
+      </div></article>
 
-<a id="rocket" href="#top"></a>
-<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
 
+	 </div>
 
+	 </div>
+       </div>
+     </div>
 
+ <div class="container footer">
+  <div class="row">
+    <div class="col-md-10">
+      <small class="text-muted">xxx Theme:<a href="https://fei7.cc/">LeonHe</a></small>
+    </div>
+    <div class="col-md-2">
+      <small class="text-muted"></small>
+      </div>
+   </div>
+ </div>
 
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'google analytics code', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
 
-
-</body>
-</html>
+</body></html>

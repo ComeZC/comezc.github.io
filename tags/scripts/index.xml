@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>scripts on CC&#39;s Notebook</title>
+    <link>https://comezc.com/tags/scripts/</link>
+    <description>Recent content in scripts on CC&#39;s Notebook</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>xxx</copyright>
+    <lastBuildDate>Mon, 01 Jul 2019 16:50:19 +0800</lastBuildDate>
+    
+	<atom:link href="https://comezc.com/tags/scripts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Shopify Scripts</title>
+      <link>https://comezc.com/post/shopify-scripts/</link>
+      <pubDate>Mon, 01 Jul 2019 16:50:19 +0800</pubDate>
+      
+      <guid>https://comezc.com/post/shopify-scripts/</guid>
+      <description>Shopify Scripts  买指定商品，享受所有配件八折，其中，部分配件仅允许享受一次八折优惠
+SPECIFIC_VID = 28785311875136 UNLIMIT_DISCOUNT_PIDS = [3742304010304, 3733881094208] LIMIT_ONCE_DISCOUNT_PIDS = [3742295982144] def partition(cart, line_items) # Sort the items by price from high to low sorted_items = line_items.sort_by{|line_item| line_item.variant.price}.reverse # Create an array of items to return discount_items = [] sorted_items.each do |line_item| if LIMIT_ONCE_DISCOUNT_PIDS.include?(line_item.variant.product.id) &amp;amp;&amp;amp; line_item.quantity &amp;gt; 1 discount_item = line_item.split(take: 1) cart.line_items &amp;lt;&amp;lt; discount_item discount_items.push(discount_item) else discount_items.push(line_item) end end discount_items end Input.cart.line_items.each do |line_item| next unless line_item.</description>
+    </item>
+    
+  </channel>
+</rss>
