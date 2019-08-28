@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>service provider on CC&#39;s Notebook</title>
+    <link>https://comezc.com/tags/service-provider/</link>
+    <description>Recent content in service provider on CC&#39;s Notebook</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>Copyright (c) 2018 - 2019, Comezc; all rights reserved. </copyright>
+    <lastBuildDate>Tue, 27 Aug 2019 19:50:19 +0800</lastBuildDate>
+    
+	<atom:link href="https://comezc.com/tags/service-provider/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Laravel Service Provider设置延迟加载后注册失败</title>
+      <link>https://comezc.com/post/laravel-service-provider%E8%AE%BE%E7%BD%AE%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD%E5%90%8E%E6%B3%A8%E5%86%8C%E5%A4%B1%E8%B4%A5/</link>
+      <pubDate>Tue, 27 Aug 2019 19:50:19 +0800</pubDate>
+      
+      <guid>https://comezc.com/post/laravel-service-provider%E8%AE%BE%E7%BD%AE%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD%E5%90%8E%E6%B3%A8%E5%86%8C%E5%A4%B1%E8%B4%A5/</guid>
+      <description>问题 在参考网上示例，尝试创建service provider的时候，第一次尝试成功运行；然后修改其 $defer 属性为true再注释掉后，service provider始终无法加载成功。
+定位&amp;amp;解决过程  验证新建的service provider本身是否有问题
+\App\Providers\AppServiceProvider 是系统默认会加载的，可以在其 register 函数中，链式加载新建的service provider
+public function register() { $this-&amp;gt;app-&amp;gt;register(ExampleServiceProvider::class); }  试验后，发现程序正常运行，所以基本确认是注册在 config/app.php 中的 ExampleServiceProvider 没有生效。
+ 研究service provider加载的源码
+通过 Illuminate\Foundation\Application 源码找到 registerConfiguredProviders 方法：
+(new ProviderRepository($this, new Filesystem, $this-&amp;gt;getCachedServicesPath())) -&amp;gt;load($providers-&amp;gt;collapse()-&amp;gt;toArray());  Laravel是通过这个方法读取 config/app.php 中的 providers 内容并加载到 ProviderRepository 中。
+根据 $this-&amp;gt;getCachedServicesPath() 可以看出，这里是有缓存的。
+Laravel会根据 bootstrap/cache/services.php 缓存文件的内容去加载service provider。
+ 程序员生涯两座大山：缓存 &amp;amp; 命名
+  解决方法 更改defer属性后，需要执行 php artisan clear-compiled 和 php artisan optimize 来更新service provider的缓存。</description>
+    </item>
+    
+  </channel>
+</rss>

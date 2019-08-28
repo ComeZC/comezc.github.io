@@ -3,22 +3,71 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://comezc.com/about/</loc>
-    <lastmod>2019-07-12T15:12:03+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://comezc.com/categories/</loc>
-    <lastmod>2019-07-11T16:50:19+08:00</lastmod>
+    <lastmod>2019-08-27T19:50:19+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://comezc.com/</loc>
-    <lastmod>2019-07-11T16:50:19+08:00</lastmod>
+    <lastmod>2019-08-27T19:50:19+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://comezc.com/categories/laravel/</loc>
+    <lastmod>2019-08-27T19:50:19+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://comezc.com/tags/laravel/</loc>
+    <lastmod>2019-08-27T19:50:19+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://comezc.com/post/laravel-service-provider%E8%AE%BE%E7%BD%AE%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD%E5%90%8E%E6%B3%A8%E5%86%8C%E5%A4%B1%E8%B4%A5/</loc>
+    <lastmod>2019-08-27T19:50:19+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://comezc.com/post/</loc>
+    <lastmod>2019-08-27T19:50:19+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://comezc.com/tags/service-provider/</loc>
+    <lastmod>2019-08-27T19:50:19+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://comezc.com/tags/</loc>
+    <lastmod>2019-08-27T19:50:19+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://comezc.com/tags/%E5%9D%91/</loc>
+    <lastmod>2019-08-27T19:50:19+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://comezc.com/about/</loc>
+    <lastmod>2019-07-12T15:12:03+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -46,20 +95,6 @@
   
   <url>
     <loc>https://comezc.com/tags/mysql%E5%8D%95%E6%9C%BA%E5%A4%9A%E5%AE%9E%E4%BE%8B/</loc>
-    <lastmod>2019-07-11T16:50:19+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://comezc.com/post/</loc>
-    <lastmod>2019-07-11T16:50:19+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://comezc.com/tags/</loc>
     <lastmod>2019-07-11T16:50:19+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
