@@ -78,8 +78,8 @@
 	<div class='title'> Shopify Scripts </div>
 	  
 	  <span class="text-muted"><ion-icon name="ios-calendar"></ion-icon>Posted by:&nbsp;Mon Jul 1, 2019 | 
-	  <ion-icon name="ios-podium"></ion-icon>Word Count: 153&nbsp;&nbsp; | 
-	  <ion-icon name="ios-time"></ion-icon> Reading Time: 1 Minute&nbsp;&nbsp;</span>
+	  <ion-icon name="ios-podium"></ion-icon>Word Count: 364&nbsp;&nbsp; | 
+	  <ion-icon name="ios-time"></ion-icon> Reading Time: 2 Minute&nbsp;&nbsp;</span>
 
 	  
 
@@ -152,6 +152,89 @@ if flag
 else 
   Output.shipping_rates = Input.shipping_rates
 end
+</code></pre></li>
+
+<li><p>复杂优惠组合：第二个半价，达到数量赠送部分，达到金额赠送礼品</p>
+
+<pre><code class="language-ruby">#Part1, Kit Second Half Price
+num=0
+Input.cart.line_items.each do |line_item|
+    next unless line_item.variant.product.id==1869754073152
+    if(line_item.quantity &gt;= 2) then
+        dnum=(line_item.quantity).div(2)
+        line_item.change_line_price(line_item.line_price - line_item.variant.price * 0.5 * dnum, message: &quot;Kit Second Half Price&quot;)
+        num=line_item.quantity % 2
+    else
+        num+=line_item.quantity
+        next unless num==2
+        line_item.change_line_price(line_item.line_price * 0.5, message: &quot;Kit Second Half Price&quot;)
+        num=0
+    end
+end
+    
+    
+#Part2, Pods Buy 10 Get 2 Free
+PAID_ITEM_COUNT = 10
+DISCOUNTED_ITEM_COUNT = 2
+    
+def discounted_items_to_find(total_items_seen, discounted_items_seen)
+  Integer(total_items_seen / (PAID_ITEM_COUNT + DISCOUNTED_ITEM_COUNT) * DISCOUNTED_ITEM_COUNT) - discounted_items_seen
+end
+    
+def partition(cart, line_items)
+  sorted_items = line_items.sort_by{|line_item| line_item.variant.price}.reverse
+  discounted_items = []
+  total_items_seen = 0
+  discounted_items_seen = 0
+    
+  sorted_items.each do |line_item|
+    total_items_seen += line_item.quantity
+    count = discounted_items_to_find(total_items_seen, discounted_items_seen)
+    next if count &lt;= 0
+    
+    if count &gt;= line_item.quantity
+      discounted_items.push(line_item)
+      discounted_items_seen += line_item.quantity
+    else
+      discounted_item = line_item.split(take: count)
+      position = cart.line_items.find_index(line_item)
+      cart.line_items.insert(position + 1, discounted_item)
+      discounted_items.push(discounted_item)
+      discounted_items_seen += discounted_item.quantity
+    end
+  end
+    
+  discounted_items
+end
+    
+eligible_items = Input.cart.line_items.select do |line_item|
+  product = line_item.variant.product
+  !product.gift_card? &amp;&amp; product.id == 1880855576640
+end
+    
+discounted_line_items = partition(Input.cart, eligible_items)
+discounted_line_items.each do |line_item|
+  line_item.change_line_price(Money.zero, message: &quot;RelxPods Buy 10 Get 2 Free&quot;)
+end
+    
+    
+#Part3, Purchase Over 199 Get Gift
+FREE_GIFT_PRODUCT_ID = 4168668315712
+if Input.cart.subtotal_price &gt;= Money.new(cents: 19900)
+  Input.cart.line_items.each do |line_item|
+    if line_item.variant.product.id == FREE_GIFT_PRODUCT_ID
+      if line_item.quantity &gt; 1
+        line_item = line_item.split(take: 1)
+        Input.cart.line_items &lt;&lt; line_item
+      end
+      line_item.change_line_price(Money.zero, message: &quot;Free Gift With Purchase Over 199&quot;)
+    end
+  end
+end
+    
+    
+Output.cart = Input.cart
+    
 </code></pre></li>
 </ol>
 
